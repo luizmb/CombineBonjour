@@ -86,7 +86,7 @@ extension NWEndpointPublisher {
     public enum ResolvedEndpoint: Equatable {
         public enum HostType: Equatable {
             case name(String)
-            case ip(IP)
+            case ip(NetworkExtensions.IP)
         }
 
         /// A host port endpoint represents an endpoint defined by the host and port.
@@ -127,9 +127,9 @@ extension NWEndpointPublisher.ResolvedEndpoint {
             case let .name(name, interface):
                 return .hostPort(host: .name(name), port: port, interface: interface, txt: txt)
             case let .ipv4(v4):
-                return .hostPort(host: .ip(IP.ipv4(v4)), port: port, interface: nil, txt: txt)
+                return .hostPort(host: .ip(NetworkExtensions.IP.ipv4(v4)), port: port, interface: nil, txt: txt)
             case let .ipv6(v6):
-                return .hostPort(host: .ip(IP.ipv6(v6)), port: port, interface: nil, txt: txt)
+                return .hostPort(host: .ip(NetworkExtensions.IP.ipv6(v6)), port: port, interface: nil, txt: txt)
             @unknown default:
                 fatalError("NWEndpoint.Host case not implemented: \(host)")
             }
