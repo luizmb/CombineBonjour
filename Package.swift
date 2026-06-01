@@ -1,6 +1,4 @@
-// swift-tools-version:5.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
+// swift-tools-version:5.5
 import PackageDescription
 
 let package = Package(
@@ -10,14 +8,12 @@ let package = Package(
     ],
     products: [
         .library(name: "CombineBonjour", targets: ["CombineBonjour"]),
-        .library(name: "CombineBonjourAllStatic", targets: ["CombineBonjourAllStatic"]),
-        .library(name: "CombineBonjourDynamic", type: .dynamic, targets: ["CombineBonjour"])
+        .library(name: "CombineBonjourDynamic", type: .dynamic, targets: ["CombineBonjour"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/teufelaudio/NetworkExtensions.git", .upToNextMajor(from: "0.1.9"))
+        .package(url: "https://github.com/teufelaudio/NetworkExtensions.git", from: "0.1.9")
     ],
     targets: [
-        .target(name: "CombineBonjour", dependencies: ["NetworkExtensions"]),
-        .target(name: "CombineBonjourAllStatic", dependencies: [.product(name: "NetworkExtensionsAllStatic", package: "NetworkExtensions")])
+        .target(name: "CombineBonjour", dependencies: ["NetworkExtensions"])
     ]
 )
